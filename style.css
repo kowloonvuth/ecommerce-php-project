@@ -1,0 +1,203 @@
+// All sections
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.form-control {
+  text-transform: capitalize;
+  padding: 1rem 0rem 1rem 1rem;
+}
+
+.form-control:focus {
+  outline: 0;
+  box-shadow: none;
+}
+
+a {
+  color: #333;
+}
+
+.hero-section {
+  background-size: cover;
+  background-position: center;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.rounded {
+  position: relative;
+}
+
+.rounded h5 {
+  color: #2a6ebc;
+  font-weight: 700;
+}
+
+.rounded h3,
+.rounded p,
+.rounded button {
+  position: relative;
+  z-index: 1;
+}
+
+#second-column {
+  margin-top: 5px;
+}
+
+/* Product Card Styles */
+
+.product-card {
+  position: relative;
+  text-align: center;
+}
+
+.product-image {
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.discount-tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: red;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.add-to-cart-btn {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.product-image:hover .add-to-cart-btn {
+  opacity: 1;
+}
+
+.product-details {
+  text-align: left;
+}
+
+.product-name {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.product-rating {
+  color: #ffc107;
+  font-size: 14px;
+}
+
+.product-price {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Newsletter Left Column Styles */
+.newsletter-left {
+  position: relative;
+  overflow: hidden;
+}
+
+.newsletter-left::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+  border-radius: 10px 0 0 10px; /* Match the left column's border radius */
+}
+
+.newsletter-left h2,
+.newsletter-left p,
+.newsletter-left button {
+  position: relative;
+  z-index: 1;
+}
+
+.newsletter-left button {
+  margin-top: 20px;
+}
+
+/* Newsletter Right Column Styles */
+.newsletter-right {
+  background: #ffffff; /* White background for the form */
+  border-radius: 0 10px 10px 0; /* Match the right column's border radius */
+  padding: 20px;
+}
+
+.newsletter-right h2 {
+  color: #333;
+}
+
+.newsletter-right .form-control {
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.newsletter-right .btn-primary {
+  background-color: #007bff;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 991px) {
+  .offcanvas-body .nav-item {
+    font-weight: 700;
+    border-bottom: 1px solid #d1d1d1;
+  }
+
+  .offcanvas-body .filter-categories {
+    width: 100%;
+    margin-bottom: 20px !important;
+    border: 1px solid #d1d1d1 !important;
+    padding: 14px;
+    border-radius: 8px;
+  }
+
+  .dropdown-menu {
+    padding: 0;
+    border: none;
+    line-height: 1.4;
+    font-size: 0.9em;
+  }
+
+  .dropdown-menu a {
+    padding-left: 0;
+  }
+
+  .dropdown-toggle::after {
+    position: absolute;
+    right: 0;
+    top: 21px;
+  }
+
+  img {
+    width: 100px;
+  }
+}
