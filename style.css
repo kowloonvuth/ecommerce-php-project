@@ -96,7 +96,7 @@ a {
 }
 
 .product-details {
-  text-align: left;
+  text-align: center;
 }
 
 .product-name {
@@ -119,17 +119,6 @@ a {
 .newsletter-left {
   position: relative;
   overflow: hidden;
-}
-
-.newsletter-left::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
-  border-radius: 10px 0 0 10px; /* Match the left column's border radius */
 }
 
 .newsletter-left h2,
@@ -164,6 +153,16 @@ a {
   border: none;
   padding: 10px;
   border-radius: 5px;
+}
+
+.listed-product a {
+  text-decoration: none;
+}
+
+// Register Form
+
+.form-title {
+  background-color: red;
 }
 
 @media screen and (max-width: 991px) {
