@@ -21,10 +21,10 @@ include './includes/header.php';
     grid-template-rows: 1fr auto 1fr;
     align-items: center;
 }
-.container{
+/* .container{
     max-width: 800px;
     margin-top: 0 auto;
-}
+} */
 .contact-form h1{
     text-align: center;
     font-size: 2.5rem;
@@ -154,4 +154,5 @@ textarea{
     <?php
         include './includes/footer.php'
     ?>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 </body>

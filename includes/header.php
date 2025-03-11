@@ -4,7 +4,7 @@
             <div class="col-sm-4 col-lg-1 text-center text-sm-start">
                 <div class="main-logo">
                     <a href="./index.php">
-                        <img src="#" alt="logo" class="img-fluid">
+                        <img src="./assets/images/logo-1.avif" alt="logo" class="img-fluid">
                     </a>
                 </div>
             </div>
@@ -23,11 +23,11 @@
             <div class="col-sm-8 col-lg-5 d-flex justify-content-end gap-5 align-items-center mt-4 mt-sm-0 justify-content-center justify-content-sm-end">
                 <div class="support-box text-end d-none d-xl-block">
                     <span class="fs-6 secondary-font text-muted">Phone</span>
-                    <h5 class="mb-0">+123-45678900</h5>
+                    <h5 class="mb-0">098 751 077</h5>
                 </div>
                 <div class="support-box text-end d-none d-xl-block">
                     <span class="fs-6 secondary-font text-muted">Email</span>
-                    <h5 class="mb-0">your@gmail.com</h5>
+                    <h5 class="mb-0">klassy@gmail.com</h5>
                 </div>
             </div>
         </div>
@@ -81,9 +81,9 @@
                 <div class="offcanvas-body justify-content-between">
                     <select class="filter-categories border-0 mb-0 me-5">
                         <option>Shop by Items</option>
-                        <option>Clothes</option>
-                        <option>Food</option>
-                        <option>Toy</option>
+                        <option>zinvo</option>
+                        <option>mstr</option>
+                        <option>apple watch</option>
                     </select>
 
                     <ul class="navbar-nav menu-list list-unstyled d-flex gap-md-3 mb-0">
@@ -91,10 +91,10 @@
                             <a href="index.php" class="nav-link active">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link active">Blog</a>
+                            <a href="blogs.php" class="nav-link active">Blog</a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link active">Contact</a>
+                            <a href="contact.php" class="nav-link active">Contact</a>
                         </li>
                     </ul>
                     <div class="d-none d-lg-flex align-items-end">

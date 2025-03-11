@@ -5,7 +5,7 @@ include './includes/kick-off.php';
 include './Database/conn.php';
 $pdo = pdo_connect_mysql();
 
-$stmt = $pdo->prepare('SELECT * FROM products ORDER BY date_added DESC LIMIT 4');
+$stmt = $pdo->prepare('SELECT * FROM products ORDER BY date_added DESC LIMIT 6');
 $stmt->execute();
 $recently_added_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -62,18 +62,18 @@ $recently_added_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     <!-- Hero Section -->
 
-    <div class="hero-section" style="background-image: url('./assets/imgs/benaja-germann-s31jlbIcp7E-unsplash.jpg');">
+    <div class="hero-section" style="background-image: url('./assets/images/banner-1.jpg');">
         <div class="container col-xl px-4 py-5">
             <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
                 <div class="col-lg-6">
-                    <h2 class="mx-auto" style="width: 350px;">Seasonal Sale</h2>
-                    <h1 class="display-5 fw-bold lh-1 mb-3">Responsive Lef-alinged</h1>
+                    <h2 class="mx-auto text-center" style="width: 350px;">NEW COLLECTION</h2>
+                    <h1 class="display-5 fw-bold lh-1 mb-3 text-center">CLASSIC WATCH</h1>
                     <p class="lead">
                         Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.
                     </p>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-start mx-auto" style="width: 350px;">
-                        <button type="button" class="btn btn-success btn-lg px-4 me-md-2">Sign Up</button>
-                        <button type="button" class="btn btn-outline-secondary btn-lg px-4">Log In</button>
+                        <button type="button" class="btn btn-success btn-lg px-4 me-md-2">Buy Now</button>
+                        <button type="button" class="btn btn-outline-secondary btn-lg px-4">Browse</button>
                     </div>
                 </div>
             </div>
@@ -128,7 +128,7 @@ $recently_added_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <div class="row g-4" style="height: 60vh;">
             <!-- Left Column (2/5 width) -->
             <div class="col-md-7">
-                <div class="h-100 p-4 text-white rounded" style="background-image: url('./assets/imgs/benaja-germann-s31jlbIcp7E-unsplash.jpg'); background-size: cover; background-position: center;">
+                <div class="h-100 p-4 text-white rounded" style="background-image: url('./assets/images/apple-serie-7.jpg'); background-size: cover; background-position: center;">
                     <h3>Left Section</h3>
                     <p>This is the left section with a background image, text, and a button.</p>
                     <button class="btn btn-primary">Learn More</button>
@@ -140,17 +140,17 @@ $recently_added_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <!-- First Row (Two Columns) -->
                 <div class="row g-4 h-50">
                     <div class="col-md-6">
-                        <div class="h-100 p-4 text-white rounded" style="background-image: url('./assets/imgs/benaja-germann-s31jlbIcp7E-unsplash.jpg'); background-size: cover; background-position: center;">
-                            <h3>Right Top Left</h3>
-                            <p>This is the top left box in the right section.</p>
-                            <button class="btn btn-primary">Learn More</button>
+                        <div class="h-100 p-4 text-white rounded" style="background-image: url('./assets/images/apple-serie-10.jpg'); background-size: cover; background-position: center;">
+                            <h3>Right Top Lefthhsa</h3>
+
+                            <button class="btn btn-primary mt-5">Learn More</button>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="h-100 p-4 text-white rounded" style="background-image: url('./assets/imgs/benaja-germann-s31jlbIcp7E-unsplash.jpg'); background-size: cover; background-position: center;">
+                        <div class="h-100 p-4 text-white rounded" style="background-image: url('./assets/images/blog-3.jpg'); background-size: cover; background-position: center;">
                             <h3>Right Top Right</h3>
-                            <p>This is the top right box in the right section.</p>
-                            <button class="btn btn-primary">Learn More</button>
+                            
+                            <button class="btn btn-primary mt-5">Learn More</button>
                         </div>
                     </div>
                 </div>
@@ -158,7 +158,7 @@ $recently_added_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <!-- Second Row (One Column) -->
                 <div class="row g-4 h-75" id="second-column">
                     <div class="col-12">
-                        <div class="h-100 p-4 text-white rounded" style="background-image: url('./assets/imgs/benaja-germann-s31jlbIcp7E-unsplash.jpg'); background-size: cover; background-position: center;">
+                        <div class="h-100 p-4 text-white rounded" style="background-image: url('./assets/images/blog-10.jpg'); background-size: cover; background-position: center;">
                             <h3>Right Bottom</h3>
                             <p>This is the bottom box in the right section.</p>
                             <button class="btn btn-primary">Learn More</button>
@@ -210,12 +210,10 @@ $recently_added_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
 
         <!-- Product Grid -->
-        <div class="row g-4">
-            <!-- Product 1 -->
-
-            <div class="col-md-2 col-sm-4 col-6">
-                <div class="product-card">
-                    <?php foreach ($recently_added_products as $product): ?>
+        <div class="row row-cols-5 g-4">
+            <?php foreach ($recently_added_products as $product): ?>
+                <div class="col">
+                    <div class="product-card">
                         <div class="product-image" style="background-image: url('./assets/images/<?php echo $product['img'] ?>');">
                             <span class="discount-tag">20% OFF</span>
                             <button class="add-to-cart-btn">Add to Cart</button>
@@ -236,10 +234,11 @@ $recently_added_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 <?php endif; ?>
                             </span>
                         </div>
-                    <?php endforeach ?>
+                    </div>
                 </div>
-            </div>
+            <?php endforeach; ?>
         </div>
+
 
 
         <!-- Product 2 -->
@@ -263,7 +262,6 @@ $recently_added_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </div>
         </div> -->
 
-    </div>
     </div>
 
     <!-- Newletter Form -->
