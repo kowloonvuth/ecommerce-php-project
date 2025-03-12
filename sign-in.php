@@ -3,6 +3,10 @@
 include './includes/kick-off.php';
 include './includes/header.php';
 
+require_once('./function/signin.php');
+if (isset($_POST) && count($_POST) > 0) {
+    $Response = login($_POST);
+}
 ?>
 
 <style>
@@ -169,7 +173,12 @@ include './includes/header.php';
             </div>
             <div class="signin-form">
                 <h2 class="form-title">Sign In</h2>
-                <form action="POST" class="register-form" id="login-form">
+                <?php if (isset($Response['error'])): ?>
+                    <div class="alert alert-danger alert-dismissable mb-3">
+                        <b>Oops</b>, <?php echo $Response['error']; ?>
+                    </div>
+                <?php endif; ?>
+                <form action="POST" <?php echo $_SERVER['PHP_SELF']; ?> class="register-form" id="login-form">
                     <div class="form-group">
                         <label for="your_name">
 

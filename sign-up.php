@@ -197,18 +197,18 @@ if (isset($_POST) && count($_POST) > 0) {
                                 </small>
                             <?php endif; ?>
                         </div>
-                        <!-- <div class="form-group">
+                        <div class="form-group">
                             <input type="checkbox" class="agree-term" form="agree-term" id="agree-term" name="agree-term" value="1">
                             <label for="agree-term" class="title-term">
                                 I agree all statements in
                                 <a href="#" class="term-service">Terms of service</a>
                             </label>
-                            <?php if (isset($Response['agree-term']) && !empty($Response['agree-term'])): ?>
+                            <?php if (isset($Response['agree-term']) || !empty($Response['agree-term'])): ?>
                                 <small class="alert alert-danger alert-dimissabl">
                                     <?php echo $Response['agree-term']; ?>
                                 </small>
                             <?php endif; ?>
-                        </div> -->
+                        </div>
                         <div class="form-group form-button">
                             <input type="submit" name="signup" id="signup" class="form-submit" value="Register">
                         </div>

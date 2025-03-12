@@ -1,10 +1,8 @@
 <?php
 require_once('./Database/conn.php');
 
-function signup()
+function signup(array $data)
 {
-
-
     $first_name = stripslashes(strip_tags(htmlspecialchars($_POST['first-name'])));
     $last_name = stripslashes(strip_tags(htmlspecialchars($_POST['last-name'])));
     $email = stripslashes(strip_tags(htmlspecialchars($_POST['email'])));
@@ -12,11 +10,13 @@ function signup()
 
     $Errors = [];
 
-    // if (empty($_POST['agree-term'])) {
-    //     $Errors['agree-term'] = "You must agree to our terms and services.";
-    //     $Errors['error'] = 'Please correct the error in your form to continue.';
-    //     return $Errors;
-    // }
+    if (isset($_POST['agree-term'])) {
+        return [];
+    } else {
+        $Errors['agree-term'] = "You must agree to our terms and services.";
+        $Errors['error'] = 'Please correct the error in your form to continue.';
+        return $Errors;
+    }
 
     if (preg_match('/[^A-Za-z0-9_]/', $first_name)) {
         $Errors['first_name'] = "Sorry please enter a valid first name";
