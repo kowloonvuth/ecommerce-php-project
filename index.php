@@ -45,24 +45,43 @@ if (isset($_SESSION['newsletter_success'])) {
     ?>
 
     <!-- Hero Section -->
-
-    <div class="hero-section" style="background-image: url('./assets/images/banner-1.jpg');">
-        <div class="container col-xl px-4 py-5">
-            <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-                <div class="col-lg-6">
-                    <h2 class="mx-auto text-center" style="width: 350px;">NEW COLLECTION</h2>
-                    <h1 class="display-5 fw-bold lh-1 mb-3 text-center">CLASSIC WATCH</h1>
-                    <p class="lead">
-                        Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.
-                    </p>
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-start mx-auto" style="width: 350px;">
-                        <button type="button" class="btn btn-success btn-lg px-4 me-md-2">Buy Now</button>
-                        <button type="button" class="btn btn-outline-secondary btn-lg px-4">Browse</button>
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            <!-- first -->
+            <div class="swiper-slide col-lg-6">
+                <div class="hero-section" style="background-image: url('./assets/images/kny-3_orig.jpg');">
+                    <div class="container col-xl px-5 mb-5">
+                        <div class="row flex-lg-column align-items-center g-5 py-5 mb-5">
+                            <h1 class="mx-auto text-center text-white" style="font-size: 38px; margin-bottom: 95px;">Let's Celebrate Khmer New Year With ZINVO family</h1>
+                        </div>
                     </div>
                 </div>
             </div>
+            <!-- second -->
+            <div class="swiper-slide col-lg-6">
+                <div class="hero-section" style="background-image: url('./assets/images/BLADE_DRAGON_1800x.webp');">
+                    <div class="container col-xl" style="padding-top: 295px;">
+                        <h2 class="mx-auto text-center text-light" style="width: 350px;">ZINVO BLADE DRAGON</h2>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-center mx-auto" style="width: 350px;">
+                            <button type="button" class="btn btn-light btn-lg px-4 me-md-2">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- third -->
+            <div class="swiper-slide col-lg-6">
+                <div class="hero-section" style="background-image: url('./assets/images/Web_1800-878_1800x.webp');">
+                    <div class="container col-xl">
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-center mx-auto" style="width: 350px;">
+                            <button type="button" class="btn btn-light btn-lg px-4 me-md-2" style="margin-top: 360px;">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-scrollbar"></div>
         </div>
     </div>
+
 
     <!-- Promotional Banner -->
 
@@ -106,54 +125,101 @@ if (isset($_SESSION['newsletter_success'])) {
         </div>
     </div>
 
-    <!-- Image Banner -->
 
-    <div class="container mt-5 mb-5">
-        <div class="row g-4" style="height: 60vh;">
-            <!-- Left Column (2/5 width) -->
-            <div class="col-md-7">
-                <div class="h-100 p-4 text-white rounded" style="background-image: url('./assets/images/apple-serie-7.jpg'); background-size: cover; background-position: center;">
-                    <h3>Left Section</h3>
-                    <p>This is the left section with a background image, text, and a button.</p>
-                    <button class="btn btn-primary">Learn More</button>
-                </div>
-            </div>
 
-            <!-- Right Column (3/5 width) -->
-            <div class="col-md-5">
-                <!-- First Row (Two Columns) -->
-                <div class="row g-4 h-50">
-                    <div class="col-md-6">
-                        <div class="h-100 p-4 text-white rounded" style="background-image: url('./assets/images/apple-serie-10.jpg'); background-size: cover; background-position: center;">
-                            <h3>Right Top Lefthhsa</h3>
+    <!-- Feature Products -->
 
-                            <button class="btn btn-primary mt-5">Learn More</button>
+    <!-- New Feature Products -->
+    <!-- Banner Section -->
+
+    <section class="py-3" style="background-image: url('#'); background-repeat: no-repeat; background-size: cover;">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="banner-blocks">
+                        <div class="banner-ad large bg-info block-1">
+                            <div class="swiper">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <div class="row banner-content p-5">
+                                            <div class="content-wrapper col-md-7">
+                                                <div class="categories">100% natural</div>
+                                                <h3 class="display-4">Fresh Smoothies & Summer Juice</h3>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dignissim massa diam elementum.</p>
+                                                <a href="#" class="btn btn-outline-dark btn-lg text-uppercase fs-6 rounded-1 px-4 py-3 mt-3">Shop Now</a>
+                                            </div>
+                                            <div class="img-wrapper col-md-5">
+                                                <img src="assets/images/lines-from-leaves.jpg" class="img-fluid">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="swiper-slide">
+                                        <div class="row banner-content p-5">
+                                            <div class="content-wrapper col-md-7">
+                                                <div class="categories">100% natural</div>
+                                                <h3 class="display-4">Fresh Vegetables</h3>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dignissim massa diam elementum.</p>
+                                                <a href="#" class="btn btn-outline-dark btn-lg text-uppercase fs-6 rounded-1 px-4 py-3 mt-3">Shop Now</a>
+                                            </div>
+                                            <div class="img-wrapper col-md-5">
+                                                <img src="assets/images/lines-from-leaves.jpg" class="img-fluid">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="swiper-slide">
+                                        <div class="row banner-content p-5">
+                                            <div class="content-wrapper col-md-7">
+                                                <div class="categories">100% natural</div>
+                                                <h3 class="display-4">Fresh Tomato</h3>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dignissim massa diam elementum.</p>
+                                                <a href="#" class="btn btn-outline-dark btn-lg text-uppercase fs-6 rounded-1 px-4 py-3 mt-3">Shop Now</a>
+                                            </div>
+                                            <div class="img-wrapper col-md-5">
+                                                <img src="assets/images/lines-from-leaves.jpg" class="img-fluid">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-button-prev"></div>
+                                <div class="swiper-button-next"></div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="h-100 p-4 text-white rounded" style="background-image: url('./assets/images/blog-3.jpg'); background-size: cover; background-position: center;">
-                            <h3>Right Top Right</h3>
 
-                            <button class="btn btn-primary mt-5">Learn More</button>
-                        </div>
-                    </div>
-                </div>
+                        <div class="banner-ad bg-success-subtle block-2" style="background: url('#') no-repeat;background-position: right bottom">
+                            <div class="row banner-content p-5">
 
-                <!-- Second Row (One Column) -->
-                <div class="row g-4 h-75" id="second-column">
-                    <div class="col-12">
-                        <div class="h-100 p-4 text-white rounded" style="background-image: url('./assets/images/blog-10.jpg'); background-size: cover; background-position: center;">
-                            <h3>Right Bottom</h3>
-                            <p>This is the bottom box in the right section.</p>
-                            <button class="btn btn-primary">Learn More</button>
+                                <div class="content-wrapper col-md-7">
+                                    <div class="categories sale mb-3 pb-3">20% off</div>
+                                    <h3 class="banner-title">Fruits & Vegetables</h3>
+                                    <a href="#" class="d-flex align-items-center nav-link">Shop Collection <svg width="24" height="24">
+                                            <use xlink:href="#arrow-right"></use>
+                                        </svg></a>
+                                </div>
+
+                            </div>
                         </div>
+
+                        <div class="banner-ad bg-danger block-3" style="background: url('#') no-repeat; background-position: right bottom">
+                            <div class="row banner-content p-5">
+                                <div class="content-wrapper col-md-7">
+                                    <div class="categories sale mb-3 pb-3">15% off</div>
+                                    <h3 class="item-title">Baned Products</h3>
+                                    <a href="#" class="d-flex align-items-center nav-link">Shop Collection <svg width="24" height="24">
+                                            <use xlink:href="#arrow-right"></use>
+                                        </svg></a>
+                                </div>
+
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- Feature Products -->
+    </section>
+    <!-- End New Feature Products -->
 
     <!-- Demo Database -->
 
@@ -189,7 +255,6 @@ if (isset($_SESSION['newsletter_success'])) {
             <div class="d-flex justify-content-center gap-3 mt-3">
                 <a href="#" class="text-decoration-none">New Arrival</a>
                 <a href="#" class="text-decoration-none">Best Selling</a>
-                <a href="#" class="text-decoration-none">Top Rated</a>
             </div>
         </div>
 
@@ -296,100 +361,11 @@ if (isset($_SESSION['newsletter_success'])) {
             </div>
     </section>
 
-
-    <!-- Banner Section -->
-
-    <section class="py-3" style="background-image: url('#'); background-repeat: no-repeat; background-size: cover;">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="banner-blocks">
-                        <div class="banner-ad large bg-info block-1">
-                            <div class="swiper main-swiper">
-
-                                <div class="swiper-slide">
-                                    <div class="row banner-content p-5">
-                                        <div class="content-wrapper col-md-7">
-                                            <div class="categories">100% natural</div>
-                                            <h3 class="display-4">Fresh Smoothies & Summer Juice</h3>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dignissim massa diam elementum.</p>
-                                            <a href="#" class="btn btn-outline-dark btn-lg text-uppercase fs-6 rounded-1 px-4 py-3 mt-3">Shop Now</a>
-                                        </div>
-                                        <div class="img-wrapper col-md-5">
-                                            <img src="assets/images/lines-from-leaves.jpg" class="img-fluid">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="swiper-slide">
-                                    <div class="row banner-content p-5">
-                                        <div class="content-wrapper col-md-7">
-                                            <div class="categories">100% natural</div>
-                                            <h3 class="display-4">Fresh Vegetables</h3>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dignissim massa diam elementum.</p>
-                                            <a href="#" class="btn btn-outline-dark btn-lg text-uppercase fs-6 rounded-1 px-4 py-3 mt-3">Shop Now</a>
-                                        </div>
-                                        <div class="img-wrapper col-md-5">
-                                            <img src="assets/images/lines-from-leaves.jpg" class="img-fluid">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="swiper-slide">
-                                    <div class="row banner-content p-5">
-                                        <div class="content-wrapper col-md-7">
-                                            <div class="categories">100% natural</div>
-                                            <h3 class="display-4">Fresh Tomato</h3>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dignissim massa diam elementum.</p>
-                                            <a href="#" class="btn btn-outline-dark btn-lg text-uppercase fs-6 rounded-1 px-4 py-3 mt-3">Shop Now</a>
-                                        </div>
-                                        <div class="img-wrapper col-md-5">
-                                            <img src="assets/images/lines-from-leaves.jpg" class="img-fluid">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="swiper-pagination"></div>
-
-                            </div>
-                        </div>
-
-                        <div class="banner-ad bg-success-subtle block-2" style="background: url('#') no-repeat;background-position: right bottom">
-                            <div class="row banner-content p-5">
-
-                                <div class="content-wrapper col-md-7">
-                                    <div class="categories sale mb-3 pb-3">20% off</div>
-                                    <h3 class="banner-title">Fruits & Vegetables</h3>
-                                    <a href="#" class="d-flex align-items-center nav-link">Shop Collection <svg width="24" height="24">
-                                            <use xlink:href="#arrow-right"></use>
-                                        </svg></a>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="banner-ad bg-danger block-3" style="background: url('#') no-repeat; background-position: right bottom">
-                            <div class="row banner-content p-5">
-                                <div class="content-wrapper col-md-7">
-                                    <div class="categories sale mb-3 pb-3">15% off</div>
-                                    <h3 class="item-title">Baned Products</h3>
-                                    <a href="#" class="d-flex align-items-center nav-link">Shop Collection <svg width="24" height="24">
-                                            <use xlink:href="#arrow-right"></use>
-                                        </svg></a>
-                                </div>
-
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <?php
     include './includes/footer.php';
     ?>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <script>
         // active underline
@@ -483,9 +459,25 @@ if (isset($_SESSION['newsletter_success'])) {
                 updateAllCartCount();
             });
         });
+
+        // swiper
+
+        const swiper = new Swiper('.swiper', {
+            direction: 'horizontal',
+            loop: true,
+
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+
+            scrollbar: {
+                el: '.swiper-scrollbar',
+            },
+        })
     </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 </body>
 

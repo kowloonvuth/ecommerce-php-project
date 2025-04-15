@@ -198,7 +198,7 @@ a {
 /* Newsletter Second Form */
 
 .container-fluid {
-  width: 1600px;
+  width: 1480px;
 }
 
 .newsletter-title {
@@ -208,6 +208,192 @@ a {
 p {
   font-style: italic;
   font-weight: 500;
+}
+
+/* Banner ad */
+
+.banner-blocks {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: 2rem;
+  overflow: hidden;
+}
+
+.block-1 {
+  grid-area: 1 / 1 / 3 / 8;
+}
+
+.block-2 {
+  grid-area: 1 / 8 / 2 / 13;
+}
+
+.block-3 {
+  grid-area: 2 / 8 / 3 / 13;
+}
+
+@media screen and (max-width: 1140px) {
+  .banner-blocks {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 1fr);
+  }
+  .block-1 {
+    grid-area: 1 / 1 / 3 / 2;
+  }
+  .block-2 {
+    grid-area: 3 / 1 / 4 / 2;
+  }
+  .block-3 {
+    grid-area: 4 / 1 / 5 / 2;
+  }
+}
+
+.banner-ad {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.banner-ad.blue {
+  background: #e6f3fb;
+}
+
+.banner-ad .swiper-pagination {
+  bottom: 40px;
+  left: 0;
+  right: 0;
+}
+
+.banner-ad .swiper-pagination .swiper-pagination-bullet {
+  width: 16px;
+  height: 16px;
+  margin: 4px;
+  background: #fff;
+  opacity: 1;
+  transition: background 0.3s ease-out;
+}
+
+.banner-ad .swiper-slide {
+  display: flex;
+  margin-top: 140px;
+}
+
+.banner-ad .banner-content .categories {
+  font-family: "Garmond";
+  font-size: 37px;
+  text-transform: capitalize;
+  color: var(--dark-color);
+}
+
+.banner-ad .banner-content .sale {
+  position: relative;
+  display: inline-block;
+}
+
+.banner-ad .banner-content .sale:before {
+  content: "";
+  width: 80px;
+  border-bottom: 1px solid #111;
+  position: absolute;
+  bottom: 6px;
+}
+
+.banner-ad .banner-content .sale:after {
+  content: "SALE";
+  font-family: var(--body-font);
+  position: absolute;
+  font-size: 11px;
+  line-height: 15px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #252525;
+  bottom: 0;
+  right: 0;
+}
+
+.banner-wrapper {
+  margin-top: 100px;
+}
+
+.banner-ad .banner-content .banner-title {
+  letter-spacing: 0.02em;
+  font-size: 33px;
+}
+
+.banner-ad.large .banner-content .categories {
+  color: var(--accent-color);
+  text-align: left;
+}
+
+.banner-ad.large .banner-content .banner-title {
+  font-size: 54px;
+}
+
+// Swiper carousel
+
+.swiper {
+  display: flex;
+  width: 600px;
+  height: 300px;
+}
+
+/* Swiper carousel */
+.swiper-prev,
+.swiper-next {
+  width: 38px;
+  height: 38px;
+  line-height: 38px;
+  background: #f1f1f1;
+  color: #222222;
+  padding: 0;
+  text-align: center;
+  border-radius: 10px;
+  --bs-btn-border-color: transparent;
+  --bs-btn-active-bg: #ec9b22;
+  --bs-btn-active-border-color: transparent;
+  --bs-btn-hover-bg: #ffc43f;
+  --bs-btn-hover-border-color: transparent;
+  --bs-btn-disabled-color: #ccc;
+  --bs-btn-disabled-bg: #eaeaea;
+  --bs-btn-disabled-border-color: #eaeaea;
+}
+.swiper-prev:hover,
+.swiper-next:hover {
+  background: #ffc43f;
+}
+
+.btn-link {
+  margin-right: 30px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  text-align: right;
+  text-transform: capitalize;
+  color: #787878;
+}
+/* category carousel */
+.category-carousel .category-item {
+  background: #ffffff;
+  border: 1px solid #fbfbfb;
+  box-shadow: 0px 5px 22px rgba(0, 0, 0, 0.04);
+  border-radius: 16px;
+  text-align: center;
+  padding: 60px 20px;
+  margin: 20px 0;
+  transition: box-shadow 0.3s ease-out, transform 0.3s ease-out;
+}
+.category-carousel .category-item:hover {
+  transform: translate3d(0, -10px, 0);
+  box-shadow: 0px 21px 44px rgba(0, 0, 0, 0.08);
+}
+.category-carousel .category-item .category-title {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 27px;
+  letter-spacing: 0.02em;
+  text-transform: capitalize;
+  color: #222222;
+  margin-top: 20px;
 }
 
 // Register Form
@@ -251,3 +437,5 @@ p {
     width: 100px;
   }
 }
+
+/* --- */
