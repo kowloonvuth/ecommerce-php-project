@@ -56,7 +56,7 @@
                         <a href="#" class="mx-3" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
                             <iconify-icon icon="mdi:cart" class="fs-4 position-relative"></iconify-icon>
                             <span class="position-absolute translate-middle badge rounded-circle bg-primary pt-2">
-                                03
+                                0
                             </span>
                         </a>
                     </li>
@@ -88,13 +88,13 @@
 
                     <ul class="navbar-nav menu-list list-unstyled d-flex gap-md-3 mb-0">
                         <li class="nav-item">
-                            <a href="index.php" class="nav-link active">Home</a>
+                            <a href="index.php" class="nav-link">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a href="blogs.php" class="nav-link active">Blog</a>
+                            <a href="blogs.php" class="nav-link">Blog</a>
                         </li>
                         <li class="nav-item">
-                            <a href="contact.php" class="nav-link active">Contact</a>
+                            <a href="contact.php" class="nav-link">Contact</a>
                         </li>
                     </ul>
                     <div class="d-none d-lg-flex align-items-end">
@@ -112,8 +112,8 @@
                             <li class="">
                                 <a href="#" class="mx-3" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart" aria-controls="offcanvasCart">
                                     <iconify-icon icon="mdi:cart" class="fs-4 position-relative"></iconify-icon>
-                                    <span class="position-absolute translate-middle badge rounded-circle bg-primary pt-2">
-                                        03
+                                    <span id="cart-count" class="position-absolute translate-middle badge rounded-circle bg-primary pt-2">
+                                        0
                                     </span>
                                 </a>
                             </li>

@@ -53,7 +53,7 @@
     </div>
     <div class="row mt-4">
         <div class="col-12 text-center">
-            <p class="mb-0">&copy; 2025 Your Company Name. All rights reserved.</p>
+            <p class="mb-0">&copy; 2025 Klassy Watch. All rights reserved.</p>
         </div>
     </div>
 </footer>

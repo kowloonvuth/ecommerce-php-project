@@ -10,9 +10,7 @@ function signup(array $data)
 
     $Errors = [];
 
-    if (isset($_POST['agree-term'])) {
-        return [];
-    } else {
+    if (!isset($_POST['agree-term'])) {
         $Errors['agree-term'] = "You must agree to our terms and services.";
         $Errors['error'] = 'Please correct the error in your form to continue.';
         return $Errors;

@@ -11,3 +11,5 @@ function pdo_connect_mysql()
         exit('Failed to connect to databse!');
     }
 }
+
+$pdo = pdo_connect_mysql();

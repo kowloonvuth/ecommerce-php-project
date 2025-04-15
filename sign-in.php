@@ -117,13 +117,13 @@ if (isset($_POST) && count($_POST) > 0) {
 
     .agree-term {
         position: relative;
-        margin-left: 250px;
+        margin-left: -300px;
         margin-top: 9px;
     }
 
     .label-agree-term {
         display: flex;
-        align-items: center;
+        justify-content: center;
         font-size: 14px;
     }
 
@@ -181,6 +181,7 @@ if (isset($_POST) && count($_POST) > 0) {
                 <form action="POST" <?php echo $_SERVER['PHP_SELF']; ?> class="register-form" id="login-form">
                     <div class="form-group">
                         <label for="your_name">
+
 
                         </label>
                         <input type="text" name="your_name" id="your_name" placeholder="Your name">

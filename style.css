@@ -1,6 +1,43 @@
+/* Theme Colors */
+
+:root {
+  --accent-color: #ffc43f;
+  --dark-color: #222222;
+  --light-dark-color: #727272;
+  --light-color: #fff;
+  --grey-color: #dbdbdb;
+  --light-grey-color: #fafafa;
+  --primary-color: #6995b1;
+  --light-primary-color: #eef1f3;
+}
+
+/* Font */
+:root {
+  --body-font: "Open Sans", sans-serif;
+  --heading-font: "Nunito", sans-serif;
+  --size: 18px;
+  --margin-top-size: 90px;
+}
 
 body {
-  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.03rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--heading-font);
+  color: var(--dark-color);
+  font-weight: 800;
+  font-size: var(--size);
+}
+
+.display-4 {
+  font-weight: 700;
+  font-size: 48px;
 }
 
 .form-control {
@@ -156,6 +193,21 @@ a {
 
 .listed-product a {
   text-decoration: none;
+}
+
+/* Newsletter Second Form */
+
+.container-fluid {
+  width: 1600px;
+}
+
+.newsletter-title {
+  margin-top: var(--margin-top-size);
+}
+
+p {
+  font-style: italic;
+  font-weight: 500;
 }
 
 // Register Form

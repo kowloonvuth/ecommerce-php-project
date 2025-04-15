@@ -117,7 +117,7 @@ if (isset($_POST) && count($_POST) > 0) {
 
     .agree-term {
         position: relative;
-        margin-left: -200px;
+        margin-left: -250px;
         margin-top: 9px;
     }
 
@@ -140,6 +140,7 @@ if (isset($_POST) && count($_POST) > 0) {
         text-decoration: underline;
     }
 </style>
+
 
 <body>
     <section class="signup">
@@ -198,16 +199,16 @@ if (isset($_POST) && count($_POST) > 0) {
                             <?php endif; ?>
                         </div>
                         <div class="form-group">
-                            <input type="checkbox" class="agree-term" form="agree-term" id="agree-term" name="agree-term" value="1">
-                            <label for="agree-term" class="title-term">
-                                I agree all statements in
-                                <a href="#" class="term-service">Terms of service</a>
-                            </label>
+                            <input type="checkbox" class="agree-term" id="agree-term" name="agree-term" value="1">
                             <?php if (isset($Response['agree-term']) || !empty($Response['agree-term'])): ?>
                                 <small class="alert alert-danger alert-dimissabl">
                                     <?php echo $Response['agree-term']; ?>
                                 </small>
                             <?php endif; ?>
+                            <label for="agree-term" class="title-term">
+                                I agree all statements in
+                                <a href="#" class="term-service">Terms of service</a>
+                            </label>
                         </div>
                         <div class="form-group form-button">
                             <input type="submit" name="signup" id="signup" class="form-submit" value="Register">

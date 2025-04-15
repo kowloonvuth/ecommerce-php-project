@@ -8,7 +8,14 @@ $pdo = pdo_connect_mysql();
 $stmt = $pdo->prepare('SELECT * FROM products ORDER BY date_added DESC LIMIT 6');
 $stmt->execute();
 $recently_added_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+if (isset($_SESSION['newsletter_success'])) {
+    $success = $_SESSION['newsletter_success'];
+    unset($_SESSION['newsletter_success']);
+}
+
 ?>
+
 
 <body>
     <!-- Hidden sidebar menu -->
@@ -20,37 +27,14 @@ $recently_added_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <div class="order-md-last">
                 <h4 class="d-flex justify-content-between align-items-center mb-3">
                     <span class="text-primary">Your Cart</span>
-                    <span class="badge bg-primary rounded-circle pt-2">3</span>
+                    <span id="cart-sidebar-count" class="badge bg-primary rounded-circle pt-2">0</span>
                 </h4>
-                <ul class="list-group mb-3">
-                    <li class="list-group-item d-flex justify-content-between lh-sm">
-                        <div>
-                            <h6 class="my-0">Grey Hoodie</h6>
-                            <small class="text-body-secondary">Breif description</small>
-                        </div>
-                        <span class="text-body-secondary">$12</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between lh-sm">
-                        <div>
-                            <h6 class="my-0">Dog Food</h6>
-                            <small class="text-body-second">Brief description</small>
-                        </div>
-                        <span class="text-body-secondary">$8</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between lh-sm">
-                        <div>
-                            <h6 class="my-0">Soft Toy</h6>
-                            <small class="text-body-secondary">Brief description</small>
-                        </div>
-                        <span class="text-body-secondary">$5</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between">
-                        <span class="fw-bold">Total (USD)</span>
-                        <strong>$20</strong>
-                    </li>
-                </ul>
+                <ul id="cart-items" class="list-group mb-3">
 
-                <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
+                </ul>
+                <button class="w-100 btn btn-priamry btn-lg bg-danger" type="submit">
+                    <a href="checkout.php" style="text-decoration: none;">Continue To Checkout</a>
+                </button>
             </div>
         </div>
     </div>
@@ -149,7 +133,7 @@ $recently_added_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <div class="col-md-6">
                         <div class="h-100 p-4 text-white rounded" style="background-image: url('./assets/images/blog-3.jpg'); background-size: cover; background-position: center;">
                             <h3>Right Top Right</h3>
-                            
+
                             <button class="btn btn-primary mt-5">Learn More</button>
                         </div>
                     </div>
@@ -216,7 +200,7 @@ $recently_added_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <div class="product-card">
                         <div class="product-image" style="background-image: url('./assets/images/<?php echo $product['img'] ?>');">
                             <span class="discount-tag">20% OFF</span>
-                            <button class="add-to-cart-btn">Add to Cart</button>
+                            <button class="btn btn-primary add-to-cart-btn" data-product='<?php echo json_encode($product); ?>'>Add to Cart</button>
                         </div>
                         <div class="product-details mt-3">
                             <h5 class="product-name"><?php echo $product['title'] ?></h5>
@@ -238,68 +222,268 @@ $recently_added_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 </div>
             <?php endforeach; ?>
         </div>
-
-
-
-        <!-- Product 2 -->
-        <!-- <div class="col-md-2 col-sm-4 col-6">
-            <div class="product-card">
-                <div class="product-image" style="background-image: url('./assets/images/apple-serie-10.jpg');">
-                    <span class="discount-tag">20% OFF</span>
-                    <button class="add-to-cart-btn">Add to Cart</button>
-                </div>
-                <div class="product-details mt-3">
-                    <h5 class="product-name">Product Name 1</h5>
-                    <div class="product-rating">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-half text-warning"></i>
-                    </div>
-                    <p class="product-price">$50.00</p>
-                </div>
-            </div>
-        </div> -->
-
     </div>
 
-    <!-- Newletter Form -->
+    <!-- Newletter Form 1 -->
 
-    <div class="container mt-5 mb-5 p-0">
+    <!-- <div class="container mt-5 mb-5 p-0">
         <div class="row g-0 align-items-center" style="background: linear-gradient(90deg, #ff7e5f, #feb47b); border-radius: 10px;">
-            <!-- Left Column (Background Image with Text) -->
+            
             <div class="col-md-6">
                 <div class="newsletter-left p-5 text-white text-center" style="background-image: url('https://via.placeholder.com/600x400'); background-size: cover; background-position: center; border-radius: 10px 0 0 10px;">
                     <h2>Don't Miss Out!</h2>
-                    <p class="lead">Subscribe to our newsletter and stay updated with the latest news, offers, and exclusive deals.</p>
-                    <button class="btn btn-light btn-lg">Learn More</button>
+                    <img src="./assets/svg/newsletter.png" width="200px" height="200px" />
                 </div>
             </div>
 
-            <!-- Right Column (Subscription Form) -->
+           
             <div class="col-md-6">
                 <div class="newsletter-right p-5">
                     <h2 class="mb-4">Subscribe to Our Newsletter</h2>
-                    <form>
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Your Name</label>
-                            <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
+                    <?php if (isset($success)): ?>
+                        <div role="alert">
+                            <?php echo "<script>alert('$success')</script>" ?>
                         </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Your Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-lg w-100">Subscribe</button>
+                    <?php endif; ?>
+                    <form class="form-inline" action="http://localhost:8012/ecommerce-php/Database/newsletter_db.php" method="post">
+                        <label for="inlineFormInputName2" class="sr-only">Name</label>
+                        <input type="text" name="name" class="form-control mb-mr-2" id="inlineFormInputName2" placeholder="Your name..." required>
+
+                        <label for="inlineFormInputName2" class="sr-only">Email</label>
+                        <input type="email" name="email" class="form-control mb-3 mr-sm-2" id="inlineFormInputName2" placeholder="example@mail.com" required>
+
+                        <button type="submit" class="btn btn-primary mb-2">Submit</button>
                     </form>
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
+
+    <!-- Second Newsletter form -->
+
+    <section class="py-5">
+        <div class="container-fluid">
+            <div class="bg-secondary py-5 my-5 rounded-5" style="background: url('assets/images/tp189-hein-11-l-job137.jpg') no-repeat;">
+                <div class="container my-5">
+                    <div class="row">
+                        <div class="col-md-6 p-5 text-center newsletter-title">
+                            <h2 class="section-title display-4">Get <span class="text-warning">25% Discount</span> on your first purchase</h2>
+                            <p>Join our email list so you're always first to know about new items, Walmart exclusives, & everyday low prices—plus get inspiration & tips for every season, top trends, & more.</p>
+                        </div>
+                        <div class="col-md-6 p-5">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Name</label>
+                                    <input type="text" class="form-control form-control-lg" name="name" id="name" placeholder="Name">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="" class="form-label">Email</label>
+                                    <input type="email" class="form-control form-control-lg" name="email" id="email" placeholder="firstlastname@mail.com">
+                                </div>
+                                <div class="form-check form-check-inline mb-3">
+                                    <label class="form-check-label" for="subscribe">
+                                        <input type="checkbox" class="form-check-input" id="subscribe" value="subscribe">
+                                        Subscribe to the newsletter
+                                    </label>
+                                </div>
+                                <div class="d-grid gap-2">
+                                    <button type="submit" class="btn btn-info btn-lg">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+
+    <!-- Banner Section -->
+
+    <section class="py-3" style="background-image: url('#'); background-repeat: no-repeat; background-size: cover;">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="banner-blocks">
+                        <div class="banner-ad large bg-info block-1">
+                            <div class="swiper main-swiper">
+
+                                <div class="swiper-slide">
+                                    <div class="row banner-content p-5">
+                                        <div class="content-wrapper col-md-7">
+                                            <div class="categories">100% natural</div>
+                                            <h3 class="display-4">Fresh Smoothies & Summer Juice</h3>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dignissim massa diam elementum.</p>
+                                            <a href="#" class="btn btn-outline-dark btn-lg text-uppercase fs-6 rounded-1 px-4 py-3 mt-3">Shop Now</a>
+                                        </div>
+                                        <div class="img-wrapper col-md-5">
+                                            <img src="assets/images/lines-from-leaves.jpg" class="img-fluid">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <div class="row banner-content p-5">
+                                        <div class="content-wrapper col-md-7">
+                                            <div class="categories">100% natural</div>
+                                            <h3 class="display-4">Fresh Vegetables</h3>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dignissim massa diam elementum.</p>
+                                            <a href="#" class="btn btn-outline-dark btn-lg text-uppercase fs-6 rounded-1 px-4 py-3 mt-3">Shop Now</a>
+                                        </div>
+                                        <div class="img-wrapper col-md-5">
+                                            <img src="assets/images/lines-from-leaves.jpg" class="img-fluid">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <div class="row banner-content p-5">
+                                        <div class="content-wrapper col-md-7">
+                                            <div class="categories">100% natural</div>
+                                            <h3 class="display-4">Fresh Tomato</h3>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dignissim massa diam elementum.</p>
+                                            <a href="#" class="btn btn-outline-dark btn-lg text-uppercase fs-6 rounded-1 px-4 py-3 mt-3">Shop Now</a>
+                                        </div>
+                                        <div class="img-wrapper col-md-5">
+                                            <img src="assets/images/lines-from-leaves.jpg" class="img-fluid">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="swiper-pagination"></div>
+
+                            </div>
+                        </div>
+
+                        <div class="banner-ad bg-success-subtle block-2" style="background: url('#') no-repeat;background-position: right bottom">
+                            <div class="row banner-content p-5">
+
+                                <div class="content-wrapper col-md-7">
+                                    <div class="categories sale mb-3 pb-3">20% off</div>
+                                    <h3 class="banner-title">Fruits & Vegetables</h3>
+                                    <a href="#" class="d-flex align-items-center nav-link">Shop Collection <svg width="24" height="24">
+                                            <use xlink:href="#arrow-right"></use>
+                                        </svg></a>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="banner-ad bg-danger block-3" style="background: url('#') no-repeat; background-position: right bottom">
+                            <div class="row banner-content p-5">
+                                <div class="content-wrapper col-md-7">
+                                    <div class="categories sale mb-3 pb-3">15% off</div>
+                                    <h3 class="item-title">Baned Products</h3>
+                                    <a href="#" class="d-flex align-items-center nav-link">Shop Collection <svg width="24" height="24">
+                                            <use xlink:href="#arrow-right"></use>
+                                        </svg></a>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <?php
     include './includes/footer.php';
     ?>
+
+    <script>
+        // active underline
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set active link based on current page
+            const currentPage = window.location.pathname.split('/').pop() || 'index.php';
+            document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+                const linkPage = link.getAttribute('href').split('/').pop();
+                if (linkPage === currentPage) {
+                    link.classList.add('text-decoration-underline', 'active');
+                } else {
+                    link.classList.remove('text-decoration-underline', 'active');
+                }
+            });
+        });
+
+        // add to cart function
+
+        document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+            button.addEventListener('click', async function() {
+                const productData = JSON.parse(this.getAttribute('data-product'));
+                try {
+                    const response = await fetch('function/save_cart.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            product_id: productData.id
+                        })
+                    });
+
+                    const result = await response.json();
+                    console.log("Add to cart result:", result);
+
+                    if (result.success) {
+                        await updateCartSidebar();
+                        await updateAllCartCount();
+                    } else {
+                        console.log('Error:', result.message);
+                    }
+                } catch (error) {
+                    console.log('Error:', error);
+                }
+            });
+
+            // function to update cart sidebar
+
+            async function updateCartSidebar() {
+                try {
+                    const response = await fetch('function/get_cart.php');
+
+                    if (!response.ok) {
+                        throw new Error('Failed to fetch cart');
+                    }
+
+                    const data = await response.json();
+
+                    console.log("Cart response:", data);
+                    document.getElementById('cart-sidebar-count').textContent = data.count;
+                    document.getElementById('cart-items').innerHTML = data.html;
+                } catch (error) {
+                    //console.error('Error updating cart:', error);
+                    console.error('Error updating cart:', error);
+                }
+            }
+
+            async function updateAllCartCount() {
+                try {
+                    const response = await fetch('function/get_cart.php');
+                    if (!response.ok) return;
+
+                    const data = await response.json();
+
+                    const count = data.count;
+
+                    document.getElementById('cart-sidebar-count').textContent = count;
+
+                    const mobileCartBadge = document.querySelector('.d-flex.d-lg-none .badge');
+                    if (mobileCartBadge) mobileCartBadge.textContent = count;
+                    const desktopCartBadge = document.querySelector('.d-none.d-lg-flex .badge');
+                    if (desktopCartBadge) desktopCartBadge.textContent = count;
+                } catch (error) {
+                    console.log('Error updating header count:', error);
+                }
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+                updateCartSidebar();
+                updateAllCartCount();
+            });
+        });
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
