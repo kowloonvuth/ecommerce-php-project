@@ -124,14 +124,6 @@ $total = array_reduce($cart_items, function ($sum, $item) {
 
                     <hr class="mb-4">
 
-                    <h4 class="mb-3">Payment</h4>
-
-                    <hr class="mb-4">
-                    <form action="your php cart file" method="post">
-                        <div class="paypal">
-                            <button type="submit" name="paypal"><img src="https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-100px.png" border="0" alt="PayPal Logo"></button>
-                        </div>
-                    </form>
                 </form>
             </div>
 
@@ -185,14 +177,13 @@ $total = array_reduce($cart_items, function ($sum, $item) {
                         </div>
                     </ul>
                 <?php endif; ?>
-                <form class="card p-2">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Promo code">
-                        <div class="input-group-append">
-                            <button type="submit" class="btn btn-secondary">Redeem</button>
-                        </div>
-                    </div>
-                </form>
+                <!-- Paypal Button -->
+                <div class="container">
+                    <hr class="mb-4">
+                    <h4 class="mb-3">Payment</h4>
+                    <div id="paypal-button-container"></div>
+                    <p id="result-message"></p>
+                </div>
             </div>
         </div>
     </div>
@@ -280,6 +271,45 @@ $total = array_reduce($cart_items, function ($sum, $item) {
             });
         });
     </script>
+    <script
+        src="https://www.paypal.com/sdk/js?client-id=AX6gSiAeBCBxHJNmvXhI8PzEGOSy4pq0YhsoHizZyJqZrWKWqn0P8fn4IODGoVSgucbUCRI25qQsVGVZ&buyer-country=US&currency=USD&components=buttons"
+        data-sdk-integration-source="developer-studio"></script>
+
+    <script>
+        paypal.Buttons({
+            style: {
+                layout: 'vertical',
+                color: 'gold',
+                shape: 'rect',
+                label: 'paypal'
+            },
+            // Set up the transaction
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: '<?= number_format($total, 2, '.', '') ?>' // Total cart amount
+                        }
+                    }]
+                });
+            },
+            // Finalize the transaction
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    // Show success message to the user
+                    document.getElementById('result-message').innerText = 'Transaction completed by ' + details.payer.name.given_name;
+
+                    // Optionally redirect or send transaction details to the server
+                    // Example: location.href = 'payment-success.php?orderID=' + data.orderID;
+                });
+            },
+            onError: function(err) {
+                console.error('PayPal error:', err);
+                document.getElementById('result-message').innerText = 'An error occurred during the transaction.';
+            }
+        }).render('#paypal-button-container');
+    </script>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
