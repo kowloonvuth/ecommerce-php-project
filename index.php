@@ -14,6 +14,11 @@ if (isset($_SESSION['newsletter_success'])) {
     unset($_SESSION['newsletter_success']);
 }
 
+$stmt = $pdo->prepare('SELECT * FROM products WHERE best_seller = 1');
+$stmt->execute();
+$best_selling_products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
 ?>
 
 
@@ -282,7 +287,7 @@ if (isset($_SESSION['newsletter_success'])) {
         <div class="products">
             <?php foreach ($recently_added_products as $product): ?>
                 <a href="#">
-                    <img src="assets/images/<?= $product['img'] ?>" width="200" height="200" alt="<?= $product['title'] ?>">
+                    <img src="assets/images/<?= $product['img'] ?>" width="200" height="200" alt="<?= $product['title'] ?>" >
                     <span class="name" style="color: blue;"><?php echo $product['title'] ?></span>
                     <span class="price">
                         &dollar;<?php echo $product['price'] ?>
@@ -313,26 +318,28 @@ if (isset($_SESSION['newsletter_success'])) {
             <?php foreach ($recently_added_products as $product): ?>
                 <div class="col">
                     <div class="product-card">
-                        <div class="product-image" style="background-image: url('./assets/images/<?php echo $product['img'] ?>');">
-                            <span class="discount-tag">20% OFF</span>
-                            <button class="btn btn-primary add-to-cart-btn" data-product='<?php echo json_encode($product); ?>'>Add to Cart</button>
-                        </div>
-                        <div class="product-details mt-3">
-                            <h5 class="product-name"><?php echo $product['title'] ?></h5>
-                            <div class="product-rating">
-                                <i class="bi bi-star-fill text-warning"></i>
-                                <i class="bi bi-star-fill text-warning"></i>
-                                <i class="bi bi-star-fill text-warning"></i>
-                                <i class="bi bi-star-fill text-warning"></i>
-                                <i class="bi bi-star-half text-warning"></i>
+                        <a href="./productDetail.php?product_id=<?php echo $product['id']; ?>" style="text-decoration: none;">
+                            <div class="product-image" style="background-image: url('./assets/images/<?php echo $product['img'] ?>');">
+                                <span class="discount-tag">20% OFF</span>
+                                <button class="btn btn-primary add-to-cart-btn" data-product='<?php echo json_encode($product); ?>'>Add to Cart</button>
                             </div>
-                            <span class="product-price">
-                                &dollar;<?php echo $product['price'] ?>
-                                <?php if ($product['rrp'] > 0): ?>
-                                    <span>&dollar;<?php echo $product['rrp'] ?></span>
-                                <?php endif; ?>
-                            </span>
-                        </div>
+                            <div class="product-details mt-3">
+                                <h5 class="product-name"><?php echo $product['title'] ?></h5>
+                                <div class="product-rating">
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    <i class="bi bi-star-half text-warning"></i>
+                                </div>
+                                <span class="product-price">
+                                    &dollar;<?php echo $product['price'] ?>
+                                    <?php if ($product['rrp'] > 0): ?>
+                                        <span>&dollar;<?php echo $product['rrp'] ?></span>
+                                    <?php endif; ?>
+                                </span>
+                            </div>
+                        </a>
                     </div>
                 </div>
             <?php endforeach; ?>
@@ -437,43 +444,29 @@ if (isset($_SESSION['newsletter_success'])) {
                 <div class="col-md-12">
                     <div class="products-carousel swiper">
                         <div class="swiper-wrapper">
-                            <div class="product-item" id="product-showing">
-                                <span class="badge bg-success position-absolute m-3">-15%</span>
-                                <a href="#" class="btn-wishlist"><svg width="24" height="24">
-                                        <use xlink:href="#heart"></use>
-                                    </svg></a>
-                                <figure>
-                                    <a href="index.html" title="Product Title">
-                                        <img src="assets/images/mstr-rose-gold.webp" class="tab-image" width="150px" height="auto">
+                            <?php foreach ($best_selling_products as $product): ?>
+                                <div class="product-item" id="product-showing">
+                                    <span class="badge bg-success position-absolute m-3">-15%</span>
+                                    <a href="#" class="btn-wishlist">
+                                        <svg width="24" height="24">
+                                            <use xlink:href="#heart"></use>
+                                        </svg>
                                     </a>
-                                </figure>
-                                <h3>Sunstar Fresh Melon Juice</h3>
-                                <span class="qty">1 Unit</span><span class="rating"><svg width="24" height="24" class="text-primary">
-                                        <use xlink:href="#star-solid"></use>
-                                    </svg> 4.5</span>
-                                <span class="price">$18.00</span>
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <div class="input-group product-qty">
-                                        <span class="input-group-btn">
-                                            <button type="button" class="quantity-left-minus btn btn-danger btn-number" data-type="minus">
-                                                <svg width="16" height="16">
-                                                    <use xlink:href="#minus"></use>
-                                                </svg>
-                                            </button>
-                                        </span>
-                                        <input type="text" id="quantity" name="quantity" class="form-control input-number" value="1">
-                                        <span class="input-group-btn">
-                                            <button type="button" class="quantity-right-plus btn btn-success btn-number" data-type="plus">
-                                                <svg width="16" height="16">
-                                                    <use xlink:href="#plus"></use>
-                                                </svg>
-                                            </button>
-                                        </span>
+                                    <figure>
+                                        <a href="productDetail.php?product_id=<?php echo $product['id']; ?>" title="<?php echo htmlspecialchars($product['title']); ?>">
+                                            <img src="assets/images/<?php echo $product['img']; ?>" class="tab-image" width="150px" height="auto">
+                                        </a>
+                                    </figure>
+                                    <h3><?php echo htmlspecialchars($product['title']); ?></h3>
+                                    <span class="qty">1 Unit</span>
+                                    <span class="price">$<?php echo $product['price']; ?></span>
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <a href="#" class="nav-link">Add to Cart <iconify-icon icon="uil:shopping-cart"></iconify-icon></a>
                                     </div>
-                                    <a href="#" class="nav-link">Add to Cart <iconify-icon icon="uil:shopping-cart"></a>
                                 </div>
-                            </div>
+                            <?php endforeach; ?>
                         </div>
+
                     </div>
                     <!-- / products-carousel -->
 

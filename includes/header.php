@@ -105,7 +105,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="javascript:void(0)" class="mx-3">
+                                <a href="cart.php" class="mx-3">
                                     <iconify-icon icon="mdi:heart" class="fs-4"></iconify-icon>
                                 </a>
                             </li>
